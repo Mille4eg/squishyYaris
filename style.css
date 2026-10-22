@@ -6,6 +6,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
+h1 {
+    color: #d86a9b;
+    margin-bottom: 40px;
+}
+
 .squishy-car {
     max-width: 350px;
     width: 100%;
@@ -32,17 +37,50 @@ body {
     flex-wrap: wrap;
 }
 
-button {
-    background-color: #ff91c1;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
+.music-thumbnail {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: block;
+    flex-shrink: 0;
+    transition: transform 0.2s;
 }
 
-button:hover {
+.music-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.music-thumbnail:hover {
+    transform: scale(1.1);
+}
+
+#play-button {
+    background-color: #ff91c1;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+#play-button:hover {
     background-color: #ffb5d5;
+}
+
+#volume-label {
+    color: #ff91c1;
+    font-size: 22px;
+    cursor: pointer;
 }
 
 #volume {
@@ -51,14 +89,23 @@ button:hover {
     cursor: pointer;
 }
 
-#player {
-    display: block;
-    margin: 20px auto;
+.video-container {
+    width: 320px;
     max-width: 100%;
+    margin: 20px auto;
+}
+
+#player {
+    width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
     .squishy-car {
         animation: none;
+    }
+
+    .music-thumbnail,
+    #play-button {
+        transition: none;
     }
 }
