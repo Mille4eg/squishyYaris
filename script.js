@@ -10,7 +10,7 @@ const volumeIcon = document.getElementById("volume-icon");
 function onYouTubeIframeAPIReady() {
     player = new YT.Player("player", {
         height: "200",
-        width: "320",
+        width: "200",
         videoId: "hSN6-AMdDOo",
         playerVars: {
             autoplay: 1,
@@ -21,7 +21,8 @@ function onYouTubeIframeAPIReady() {
         },
         events: {
             onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange
+            onStateChange: onPlayerStateChange,
+            onError: onPlayerError
         }
     });
 }
@@ -48,6 +49,14 @@ function onPlayerStateChange(event) {
         playIcon.className = "fa-solid fa-play";
         playButton.setAttribute("aria-label", "Play music");
     }
+}
+
+function onPlayerError(event) {
+    console.error("YouTube player error:", event.data);
+
+    isPlaying = false;
+    playIcon.className = "fa-solid fa-play";
+    playButton.setAttribute("aria-label", "Play music");
 }
 
 playButton.addEventListener("click", () => {
