@@ -23,30 +23,38 @@ body {
     }
 }
 
-#music-button {
-    display: block;
-    margin: 40px auto 20px;
-    padding: 15px 30px;
+.music-controls {
+    margin: 35px auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+button {
     background-color: #ff91c1;
     border: none;
-    border-radius: 15px;
-    font-size: 18px;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 16px;
     cursor: pointer;
 }
 
-#music-button:hover {
+button:hover {
     background-color: #ffb5d5;
 }
 
-.video-container {
-    margin: 20px auto;
-    max-width: 320px;
+#volume {
+    width: 120px;
+    accent-color: #ff91c1;
+    cursor: pointer;
 }
 
-.video-container iframe {
-    width: 100%;
-    border: none;
-    border-radius: 12px;
+#player {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
