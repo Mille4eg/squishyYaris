@@ -8,7 +8,7 @@
 
     <title>Squishy Yaris</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 
     <link
         rel="stylesheet"
@@ -23,61 +23,52 @@
     <img
         src="https://d36dyyw8x5qpnf.cloudfront.net/photos_new/2024-09-28/toyota-yaris-g-375591.png"
         class="squishy-car"
-        alt="Why's this dealer? Taking the piss? I've been standing here. For 30 minutes."
+        alt="A very squishy Toyota Yaris"
     >
 
     <div class="music-controls">
 
-        <a
-            href="https://www.youtube.com/watch?v=hSN6-AMdDOo"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="music-thumbnail"
-            aria-label="Open song on YouTube"
-        >
-            <img
-                src="https://img.youtube.com/vi/hSN6-AMdDOo/hqdefault.jpg"
-                alt="Song thumbnail"
+        <div class="video-container">
+            <div id="player"></div>
+        </div>
+
+        <div class="player-buttons">
+
+            <button
+                id="play-button"
+                type="button"
+                aria-label="Play music"
             >
-        </a>
+                <i
+                    class="fa-solid fa-play"
+                    id="play-icon"
+                    aria-hidden="true"
+                ></i>
+            </button>
 
-        <button
-            id="play-button"
-            type="button"
-            aria-label="Play music"
-        >
-            <i
-                class="fa-solid fa-play"
-                id="play-icon"
-                aria-hidden="true"
-            ></i>
-        </button>
+            <label for="volume" id="volume-label">
+                <i
+                    class="fa-solid fa-volume-high"
+                    id="volume-icon"
+                    aria-hidden="true"
+                ></i>
+            </label>
 
-        <label for="volume" id="volume-label">
-            <i
-                class="fa-solid fa-volume-high"
-                id="volume-icon"
-                aria-hidden="true"
-            ></i>
-        </label>
+            <input
+                type="range"
+                id="volume"
+                min="0"
+                max="100"
+                value="50"
+                aria-label="Music volume"
+            >
 
-        <input
-            type="range"
-            id="volume"
-            min="0"
-            max="100"
-            value="50"
-            aria-label="Music volume"
-        >
+        </div>
 
-    </div>
-
-    <div class="video-container">
-        <div id="player"></div>
     </div>
 
     <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=4"></script>
 
 </body>
 </html>
