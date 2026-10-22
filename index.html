@@ -21,20 +21,22 @@
         alt="Why's this dealer? Taking the piss? I've been standing here. For 30 minutes."
     >
 
-    <button id="music-button">START THE CHAOS</button>
+    <div class="music-controls">
+        <button id="play-button">▶</button>
 
-    <div class="video-container">
-        <iframe
-            id="music-player"
-            width="320"
-            height="180"
-            src="https://www.youtube.com/embed/hSN6-AMdDOo?loop=1&playlist=hSN6-AMdDOo&enablejsapi=1"
-            title="Squishy Yaris Music"
-            allow="autoplay; encrypted-media"
-            allowfullscreen>
-        </iframe>
+        <label for="volume">🔊</label>
+        <input
+            type="range"
+            id="volume"
+            min="0"
+            max="100"
+            value="50"
+        >
     </div>
 
+    <div id="player"></div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="script.js"></script>
 
 </body>
