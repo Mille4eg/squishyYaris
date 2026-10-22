@@ -3,7 +3,9 @@ let player;
 let isPlaying = false;
 
 const playButton = document.getElementById("play-button");
+const playIcon = document.getElementById("play-icon");
 const volumeSlider = document.getElementById("volume");
+const volumeIcon = document.getElementById("volume-icon");
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player("player", {
@@ -14,7 +16,8 @@ function onYouTubeIframeAPIReady() {
             autoplay: 1,
             loop: 1,
             playlist: "hSN6-AMdDOo",
-            playsinline: 1
+            playsinline: 1,
+            controls: 1
         },
         events: {
             onReady: onPlayerReady,
@@ -24,20 +27,26 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(event) {
-    event.target.setVolume(50);
+    event.target.setVolume(Number(volumeSlider.value));
+    updateVolumeIcon();
     event.target.playVideo();
 }
 
 function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.PLAYING) {
         isPlaying = true;
-        playButton.textContent = "⏸";
+        playIcon.className = "fa-solid fa-pause";
+        playButton.setAttribute("aria-label", "Pause music");
     }
 
-    if (event.data === YT.PlayerState.PAUSED ||
-        event.data === YT.PlayerState.ENDED) {
+    if (
+        event.data === YT.PlayerState.PAUSED ||
+        event.data === YT.PlayerState.ENDED ||
+        event.data === YT.PlayerState.CUED
+    ) {
         isPlaying = false;
-        playButton.textContent = "▶";
+        playIcon.className = "fa-solid fa-play";
+        playButton.setAttribute("aria-label", "Play music");
     }
 }
 
@@ -57,4 +66,18 @@ volumeSlider.addEventListener("input", () => {
     if (player && typeof player.setVolume === "function") {
         player.setVolume(Number(volumeSlider.value));
     }
+
+    updateVolumeIcon();
 });
+
+function updateVolumeIcon() {
+    const volume = Number(volumeSlider.value);
+
+    if (volume === 0) {
+        volumeIcon.className = "fa-solid fa-volume-xmark";
+    } else if (volume < 50) {
+        volumeIcon.className = "fa-solid fa-volume-low";
+    } else {
+        volumeIcon.className = "fa-solid fa-volume-high";
+    }
+}
